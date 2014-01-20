@@ -14,9 +14,9 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    private static final int CELL_SIZE = 4;
-    private static final int BORDER_WIDTH = 1;
-    private static final int OFFSET = 10;
+    private static final int CELL_SIZE = 8;
+    private static final int BORDER_WIDTH = 0;
+    private static final int OFFSET = 0;
     private static final Color BACKGROUND_COLOR = Color.WHITE;
     private static final Color GRID_COLOR = Color.BLACK;
     private static final Color CELL_COLOR = Color.ORANGERED;
@@ -57,18 +57,19 @@ public class Main extends Application {
         Canvas canvas = new Canvas(getSceneWidth(grid), getSceneHeight(grid));
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
+        // draw grid
+//        for (int x = 0; x < grid.getWidth(); x++) {
+//            for (int y = 0; y < grid.getHeight(); y++) {
+//                gc.setFill(GRID_COLOR);
+//                gc.fillRect(x * CELL_SIZE + OFFSET, y * CELL_SIZE + OFFSET, CELL_SIZE, BORDER_WIDTH);
+//                gc.fillRect(x * CELL_SIZE + OFFSET, y * CELL_SIZE + OFFSET, BORDER_WIDTH, CELL_SIZE);
+//            }
+//        }
 
-        for (int x = 0; x < grid.getWidth(); x++) {
-            for (int y = 0; y < grid.getHeight(); y++) {
-                gc.setFill(GRID_COLOR);
-                gc.fillRect(x * CELL_SIZE + OFFSET, y * CELL_SIZE + OFFSET, CELL_SIZE, BORDER_WIDTH);
-                gc.fillRect(x * CELL_SIZE + OFFSET, y * CELL_SIZE + OFFSET, BORDER_WIDTH, CELL_SIZE);
-
-                if (grid.isCellAlive(x, y)) {
-                    gc.setFill(CELL_COLOR);
-                    gc.fillRect(x * CELL_SIZE + BORDER_WIDTH + OFFSET, y * CELL_SIZE + BORDER_WIDTH + OFFSET, CELL_SIZE, CELL_SIZE);
-                }
-            }
+        // draw alive cells
+        for (Cell cell : grid.getAliveCells()) {
+            gc.setFill(CELL_COLOR);
+            gc.fillRect(cell.getX() * CELL_SIZE + BORDER_WIDTH + OFFSET, cell.getY() * CELL_SIZE + BORDER_WIDTH + OFFSET, CELL_SIZE, CELL_SIZE);
         }
 
         int sizea = grid.getHeight() * CELL_SIZE;
@@ -99,8 +100,8 @@ public class Main extends Application {
 
                 @Override
                 protected Grid call() throws Exception {
-//                Thread.sleep(200);
-                    grid = grid.tick();
+                Thread.sleep(100);
+                    grid = grid.getNextGeneration();
                     return grid;
                 }
             };

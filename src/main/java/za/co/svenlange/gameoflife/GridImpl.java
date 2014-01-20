@@ -1,5 +1,8 @@
 package za.co.svenlange.gameoflife;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 /**
  * GridImpl
  *
@@ -35,18 +38,19 @@ public class GridImpl implements Grid {
         }
     }
 
-    public void addCell(int x, int y) {
+    @Override
+    public void addAliveCell(int x, int y) {
         grid[x][y] = State.ALIVE;
     }
 
     @Override
-    public GridImpl tick() {
+    public GridImpl getNextGeneration() {
         GridImpl nextGrid = new GridImpl(getWidth(), getHeight());
 
         for (int x = 0; x < grid.length; x++) {
             for (int y = 0; y < grid.length; y++) {
                 if (isAliveInNextGeneration(x, y)) {
-                    nextGrid.addCell(x, y);
+                    nextGrid.addAliveCell(x, y);
                 }
             }
         }
@@ -62,9 +66,21 @@ public class GridImpl implements Grid {
         }
     }
 
-    @Override
-    public boolean isCellAlive(int x, int y) {
+    boolean isCellAlive(int x, int y) {
         return grid[x][y] != null && grid[x][y] == State.ALIVE;
+    }
+
+    @Override
+    public Collection<Cell> getAliveCells() {
+        ArrayList<Cell> aliveCells = new ArrayList<Cell>();
+        for (int x = 0; x < grid.length; x++) {
+            for (int y = 0; y < grid.length; y++) {
+                if (isCellAlive(x, y)) {
+                    aliveCells.add(new Cell(x, y));
+                }
+            }
+        }
+        return aliveCells;
     }
 
     @Override
@@ -81,10 +97,10 @@ public class GridImpl implements Grid {
     public String toString() {
         StringBuilder buffer = new StringBuilder();
 
-        for (State[] state : grid) {
+        for (State[] states : grid) {
             for (int y = 0; y < grid.length; y++) {
 
-                buffer.append(state[y]);
+                buffer.append(states[y]);
                 if (y != grid.length - 1) {
                     buffer.append(" | ");
                 } else {

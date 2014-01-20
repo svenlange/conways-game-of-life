@@ -81,10 +81,10 @@ public class GridImpl implements Grid {
     public String toString() {
         StringBuilder buffer = new StringBuilder();
 
-        for (int x = 0; x < grid.length; x++) {
+        for (State[] state : grid) {
             for (int y = 0; y < grid.length; y++) {
 
-                buffer.append(grid[x][y]);
+                buffer.append(state[y]);
                 if (y != grid.length - 1) {
                     buffer.append(" | ");
                 } else {

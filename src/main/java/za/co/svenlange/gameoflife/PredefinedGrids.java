@@ -49,11 +49,14 @@ public class PredefinedGrids {
     }
 
     public static Grid getActionGrid() {
-        int size = 100;
-        GridImpl grid = new GridImpl(size, size);
-        for (int i = 0; i < size; i++) {
-            grid.addAliveCell(i, size / 2);
+        int width = 1200;
+        int height = 600;
+        GridImpl grid = new GridImpl(width, height);
+
+        for (int i = 0; i < width; i++) {
+            grid.addAliveCell(i, height / 2);
         }
+
         return grid;
     }
 

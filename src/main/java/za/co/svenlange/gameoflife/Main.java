@@ -14,11 +14,8 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    private static final int CELL_SIZE = 8;
-    private static final int BORDER_WIDTH = 0;
-    private static final int OFFSET = 0;
+    private static final int CELL_SIZE = 1;
     private static final Color BACKGROUND_COLOR = Color.WHITE;
-    private static final Color GRID_COLOR = Color.BLACK;
     private static final Color CELL_COLOR = Color.ORANGERED;
 
     @Override
@@ -46,37 +43,22 @@ public class Main extends Application {
     }
 
     private int getSceneWidth(Grid grid) {
-        return grid.getWidth() * CELL_SIZE + OFFSET * 2;
+        return grid.getWidth() * CELL_SIZE;
     }
 
     private int getSceneHeight(Grid grid) {
-        return grid.getHeight() * CELL_SIZE + OFFSET * 2;
+        return grid.getHeight() * CELL_SIZE;
     }
 
     private Canvas createCanvas(Grid grid) {
         Canvas canvas = new Canvas(getSceneWidth(grid), getSceneHeight(grid));
         GraphicsContext gc = canvas.getGraphicsContext2D();
 
-        // draw grid
-//        for (int x = 0; x < grid.getWidth(); x++) {
-//            for (int y = 0; y < grid.getHeight(); y++) {
-//                gc.setFill(GRID_COLOR);
-//                gc.fillRect(x * CELL_SIZE + OFFSET, y * CELL_SIZE + OFFSET, CELL_SIZE, BORDER_WIDTH);
-//                gc.fillRect(x * CELL_SIZE + OFFSET, y * CELL_SIZE + OFFSET, BORDER_WIDTH, CELL_SIZE);
-//            }
-//        }
-
         // draw alive cells
         for (Cell cell : grid.getAliveCells()) {
             gc.setFill(CELL_COLOR);
-            gc.fillRect(cell.getX() * CELL_SIZE + BORDER_WIDTH + OFFSET, cell.getY() * CELL_SIZE + BORDER_WIDTH + OFFSET, CELL_SIZE, CELL_SIZE);
+            gc.fillRect(cell.getX() * CELL_SIZE, cell.getY() * CELL_SIZE, CELL_SIZE, CELL_SIZE);
         }
-
-        int sizea = grid.getHeight() * CELL_SIZE;
-        int sizeb = grid.getWidth() * CELL_SIZE;
-        gc.setFill(GRID_COLOR);
-        gc.fillRect(sizea + OFFSET, OFFSET, BORDER_WIDTH, sizea + BORDER_WIDTH);
-        gc.fillRect(OFFSET, sizeb + OFFSET, sizeb, BORDER_WIDTH);
 
         return canvas;
     }
@@ -95,12 +77,11 @@ public class Main extends Application {
 
         @Override
         protected Task<Grid> createTask() {
-
             return new Task<Grid>() {
 
                 @Override
                 protected Grid call() throws Exception {
-                Thread.sleep(100);
+                    Thread.sleep(100);
                     grid = grid.getNextGeneration();
                     return grid;
                 }

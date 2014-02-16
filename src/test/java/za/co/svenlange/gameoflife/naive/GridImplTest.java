@@ -1,9 +1,10 @@
-package za.co.svenlange.gameoflife;
+package za.co.svenlange.gameoflife.naive;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.Collection;
+import za.co.svenlange.gameoflife.Grid;
+import za.co.svenlange.gameoflife.PredefinedGrids;
+import za.co.svenlange.gameoflife.naive.GridImpl;
 
 import static org.junit.Assert.*;
 

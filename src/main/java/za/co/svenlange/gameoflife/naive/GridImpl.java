@@ -1,4 +1,7 @@
-package za.co.svenlange.gameoflife;
+package za.co.svenlange.gameoflife.naive;
+
+import za.co.svenlange.gameoflife.Cell;
+import za.co.svenlange.gameoflife.Grid;
 
 import java.util.ArrayList;
 import java.util.Collection;

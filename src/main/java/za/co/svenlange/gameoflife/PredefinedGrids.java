@@ -1,5 +1,7 @@
 package za.co.svenlange.gameoflife;
 
+import za.co.svenlange.gameoflife.naive.GridImpl;
+
 /**
  * PredefinedGrids
  *
@@ -7,7 +9,7 @@ package za.co.svenlange.gameoflife;
  */
 public class PredefinedGrids {
     public static Grid getBlinkerGrid() {
-        GridImpl grid = new GridImpl(6, 6);
+        Grid grid = new GridImpl(6, 6);
         grid.addAliveCell(2, 2);
         grid.addAliveCell(2, 3);
         grid.addAliveCell(2, 4);
@@ -15,7 +17,7 @@ public class PredefinedGrids {
     }
 
     public static Grid getBeaconGrid() {
-        GridImpl grid = new GridImpl(8, 8);
+        Grid grid = new GridImpl(8, 8);
         grid.addAliveCell(1, 1);
         grid.addAliveCell(1, 2);
         grid.addAliveCell(2, 1);
@@ -28,7 +30,7 @@ public class PredefinedGrids {
     }
 
     public static Grid getOctagon2Grid() {
-        GridImpl grid = new GridImpl(10, 10);
+        Grid grid = new GridImpl(10, 10);
         grid.addAliveCell(4, 1);
         grid.addAliveCell(5, 1);
         grid.addAliveCell(3, 2);
@@ -49,9 +51,9 @@ public class PredefinedGrids {
     }
 
     public static Grid getActionGrid() {
-        int width = 1200;
-        int height = 600;
-        GridImpl grid = new GridImpl(width, height);
+        int width = 1800;
+        int height = 1000;
+        Grid grid = new GridImpl(width, height);
 
         for (int i = 0; i < width; i++) {
             grid.addAliveCell(i, height / 2);
@@ -61,7 +63,7 @@ public class PredefinedGrids {
     }
 
     public static Grid getFlowerOfEden() {
-        GridImpl grid = new GridImpl(13, 13);
+        Grid grid = new GridImpl(13, 13);
 
         grid.addAliveCell(2, 1);
         grid.addAliveCell(3, 1);

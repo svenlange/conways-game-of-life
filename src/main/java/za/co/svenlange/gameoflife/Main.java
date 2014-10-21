@@ -3,8 +3,6 @@ package za.co.svenlange.gameoflife;
 import javafx.application.Application;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
-import javafx.concurrent.WorkerStateEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -31,13 +29,10 @@ public class Main extends Application {
 		stage.show();
 
 		final GridService service = new GridService(grid);
-		service.setOnSucceeded(new EventHandler<WorkerStateEvent>() {
-			@Override
-			public void handle(WorkerStateEvent workerStateEvent) {
-				Grid grid = (Grid) workerStateEvent.getSource().getValue();
-				updateCanvas(grid, canvas);
-				service.restart();
-			}
+		service.setOnSucceeded(workerStateEvent -> {
+			Grid g = (Grid) workerStateEvent.getSource().getValue();
+			updateCanvas(g, canvas);
+			service.restart();
 		});
 		service.start();
 	}

@@ -100,14 +100,4 @@ public class GridImplTest {
         grid = grid.getNextGeneration();
         assertEquals(true, grid.isCellAlive(1, 6));
     }
-
-    @Test
-    public void printBlinkerToConsole() throws Exception {
-        Grid blinker = PredefinedGrids.getBlinkerGrid();
-        System.out.println(blinker + "\n\n\n");
-        blinker = blinker.getNextGeneration();
-        System.out.println(blinker + "\n\n\n");
-        blinker = blinker.getNextGeneration();
-        System.out.println(blinker);
-    }
 }

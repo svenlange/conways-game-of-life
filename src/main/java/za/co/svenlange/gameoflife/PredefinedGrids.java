@@ -50,9 +50,7 @@ public class PredefinedGrids {
         return grid;
     }
 
-    public static Grid getActionGrid() {
-        int width = 1800;
-        int height = 1000;
+    public static Grid getActionGrid(int width, int height) {
         Grid grid = new GridImpl(width, height);
 
         for (int i = 0; i < width; i++) {

@@ -62,11 +62,7 @@ public class GridImpl implements Grid {
     }
 
     private boolean isAliveInNextGeneration(int x, int y) {
-        if (isCellAlive(x, y)) {
-            return !(numberOfNeighbours(x, y) < 2) && !(numberOfNeighbours(x, y) > 3);
-        } else {
-            return numberOfNeighbours(x, y) == 3;
-        }
+        return isCellAlive(x, y) && numberOfNeighbours(x, y) == 2 || numberOfNeighbours(x, y) == 3;
     }
 
     boolean isCellAlive(int x, int y) {

@@ -19,7 +19,8 @@ public class GridImpl implements Grid {
         grid = new State[width][height];
     }
 
-    int numberOfNeighbours(int i, int j) {
+    @Override
+    public int getNumberOfNeighbours(int i, int j) {
         int neighbours = 0;
 
         for (int x = calculatePosition(i); x <= i + 1 && x < getWidth(); x++) {
@@ -42,18 +43,18 @@ public class GridImpl implements Grid {
     }
 
     @Override
-    public void addAliveCell(int x, int y) {
-        grid[x][y] = State.ALIVE;
+    public void addAliveCell(Cell cell) {
+        grid[cell.getX()][cell.getY()] = State.ALIVE;
     }
 
     @Override
-    public GridImpl getNextGeneration() {
-        GridImpl nextGrid = new GridImpl(getWidth(), getHeight());
+    public Grid getNextGeneration() {
+        Grid nextGrid = new GridImpl(getWidth(), getHeight());
 
         for (int x = 0; x < getWidth(); x++) {
             for (int y = 0; y < getHeight(); y++) {
                 if (isAliveInNextGeneration(x, y)) {
-                    nextGrid.addAliveCell(x, y);
+                    nextGrid.addAliveCell(new CellImpl(x, y));
                 }
             }
         }
@@ -62,10 +63,11 @@ public class GridImpl implements Grid {
     }
 
     private boolean isAliveInNextGeneration(int x, int y) {
-        return isCellAlive(x, y) && numberOfNeighbours(x, y) == 2 || numberOfNeighbours(x, y) == 3;
+        return isCellAlive(x, y) && getNumberOfNeighbours(x, y) == 2 || getNumberOfNeighbours(x, y) == 3;
     }
 
-    boolean isCellAlive(int x, int y) {
+    @Override
+    public boolean isCellAlive(int x, int y) {
         return grid[x][y] != null && grid[x][y] == State.ALIVE;
     }
 
@@ -75,7 +77,7 @@ public class GridImpl implements Grid {
         for (int x = 0; x < getWidth(); x++) {
             for (int y = 0; y < getHeight(); y++) {
                 if (isCellAlive(x, y)) {
-                    aliveCells.add(new Cell(x, y));
+                    aliveCells.add(new CellImpl(x, y));
                 }
             }
         }

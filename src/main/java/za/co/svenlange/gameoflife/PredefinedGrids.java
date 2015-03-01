@@ -1,5 +1,6 @@
 package za.co.svenlange.gameoflife;
 
+import za.co.svenlange.gameoflife.naive.CellImpl;
 import za.co.svenlange.gameoflife.naive.GridImpl;
 
 /**
@@ -7,46 +8,47 @@ import za.co.svenlange.gameoflife.naive.GridImpl;
  *
  * @author Sven Lange
  */
-public class PredefinedGrids {
+public abstract class PredefinedGrids {
+
     public static Grid getBlinkerGrid() {
         Grid grid = new GridImpl(6, 6);
-        grid.addAliveCell(2, 2);
-        grid.addAliveCell(2, 3);
-        grid.addAliveCell(2, 4);
+        grid.addAliveCell(new CellImpl(2, 2));
+        grid.addAliveCell(new CellImpl(2, 3));
+        grid.addAliveCell(new CellImpl(2, 4));
         return grid;
     }
 
     public static Grid getBeaconGrid() {
         Grid grid = new GridImpl(8, 8);
-        grid.addAliveCell(1, 1);
-        grid.addAliveCell(1, 2);
-        grid.addAliveCell(2, 1);
-        grid.addAliveCell(2, 2);
-        grid.addAliveCell(3, 3);
-        grid.addAliveCell(3, 4);
-        grid.addAliveCell(4, 3);
-        grid.addAliveCell(4, 4);
+        grid.addAliveCell(new CellImpl(1, 1));
+        grid.addAliveCell(new CellImpl(1, 2));
+        grid.addAliveCell(new CellImpl(2, 1));
+        grid.addAliveCell(new CellImpl(2, 2));
+        grid.addAliveCell(new CellImpl(3, 3));
+        grid.addAliveCell(new CellImpl(3, 4));
+        grid.addAliveCell(new CellImpl(4, 3));
+        grid.addAliveCell(new CellImpl(4, 4));
         return grid;
     }
 
     public static Grid getOctagon2Grid() {
         Grid grid = new GridImpl(10, 10);
-        grid.addAliveCell(4, 1);
-        grid.addAliveCell(5, 1);
-        grid.addAliveCell(3, 2);
-        grid.addAliveCell(6, 2);
-        grid.addAliveCell(2, 3);
-        grid.addAliveCell(7, 3);
-        grid.addAliveCell(1, 4);
-        grid.addAliveCell(8, 4);
-        grid.addAliveCell(1, 5);
-        grid.addAliveCell(8, 5);
-        grid.addAliveCell(2, 6);
-        grid.addAliveCell(7, 6);
-        grid.addAliveCell(3, 7);
-        grid.addAliveCell(6, 7);
-        grid.addAliveCell(4, 8);
-        grid.addAliveCell(5, 8);
+        grid.addAliveCell(new CellImpl(4, 1));
+        grid.addAliveCell(new CellImpl(5, 1));
+        grid.addAliveCell(new CellImpl(3, 2));
+        grid.addAliveCell(new CellImpl(6, 2));
+        grid.addAliveCell(new CellImpl(2, 3));
+        grid.addAliveCell(new CellImpl(7, 3));
+        grid.addAliveCell(new CellImpl(1, 4));
+        grid.addAliveCell(new CellImpl(8, 4));
+        grid.addAliveCell(new CellImpl(1, 5));
+        grid.addAliveCell(new CellImpl(8, 5));
+        grid.addAliveCell(new CellImpl(2, 6));
+        grid.addAliveCell(new CellImpl(7, 6));
+        grid.addAliveCell(new CellImpl(3, 7));
+        grid.addAliveCell(new CellImpl(6, 7));
+        grid.addAliveCell(new CellImpl(4, 8));
+        grid.addAliveCell(new CellImpl(5, 8));
         return grid;
     }
 
@@ -54,7 +56,8 @@ public class PredefinedGrids {
         Grid grid = new GridImpl(width, height);
 
         for (int i = 0; i < width; i++) {
-            grid.addAliveCell(i, height / 2);
+            Cell cell = new CellImpl(i, height / 2);
+            grid.addAliveCell(cell);
         }
 
         return grid;
@@ -63,88 +66,87 @@ public class PredefinedGrids {
     public static Grid getFlowerOfEden() {
         Grid grid = new GridImpl(13, 13);
 
-        grid.addAliveCell(2, 1);
-        grid.addAliveCell(3, 1);
-        grid.addAliveCell(4, 1);
-        grid.addAliveCell(7, 1);
-        grid.addAliveCell(8, 1);
+        grid.addAliveCell(new CellImpl(2, 1));
+        grid.addAliveCell(new CellImpl(3, 1));
+        grid.addAliveCell(new CellImpl(4, 1));
+        grid.addAliveCell(new CellImpl(7, 1));
+        grid.addAliveCell(new CellImpl(8, 1));
 
-        grid.addAliveCell(2, 2);
-        grid.addAliveCell(3, 2);
-        grid.addAliveCell(5, 2);
-        grid.addAliveCell(7, 2);
-        grid.addAliveCell(9, 2);
-        grid.addAliveCell(10, 2);
-        grid.addAliveCell(11, 2);
-        
-        grid.addAliveCell(2, 3);
-        grid.addAliveCell(3, 3);
-        grid.addAliveCell(4, 3);
-        grid.addAliveCell(7, 3);
-        grid.addAliveCell(8, 3);
-        grid.addAliveCell(9, 3);
-        grid.addAliveCell(10, 3);
-        grid.addAliveCell(11, 3);
+        grid.addAliveCell(new CellImpl(2, 2));
+        grid.addAliveCell(new CellImpl(3, 2));
+        grid.addAliveCell(new CellImpl(5, 2));
+        grid.addAliveCell(new CellImpl(7, 2));
+        grid.addAliveCell(new CellImpl(9, 2));
+        grid.addAliveCell(new CellImpl(10, 2));
+        grid.addAliveCell(new CellImpl(11, 2));
 
-        grid.addAliveCell(1, 4);
-        grid.addAliveCell(3, 4);
-        grid.addAliveCell(5, 4);
-        grid.addAliveCell(7, 4);
-        grid.addAliveCell(9, 4);
-        grid.addAliveCell(11, 4);
-        
-        grid.addAliveCell(1, 5);
-        grid.addAliveCell(2, 5);
-        grid.addAliveCell(3, 5);
-        grid.addAliveCell(4, 5);
-        grid.addAliveCell(6, 5);
-        grid.addAliveCell(8, 5);
-        grid.addAliveCell(10, 5);
-        
-        grid.addAliveCell(5, 6);
-        grid.addAliveCell(6, 6);
-        grid.addAliveCell(7, 6);
-        
-        grid.addAliveCell(2, 7);
-        grid.addAliveCell(4, 7);
-        grid.addAliveCell(6, 7);
-        grid.addAliveCell(8, 7);
-        grid.addAliveCell(9, 7);
-        grid.addAliveCell(10, 7);
-        grid.addAliveCell(11, 7);
-        
-        grid.addAliveCell(1, 8);
-        grid.addAliveCell(3, 8);
-        grid.addAliveCell(5, 8);
-        grid.addAliveCell(7, 8);
-        grid.addAliveCell(9, 8);
-        grid.addAliveCell(11, 8);
-        
-        grid.addAliveCell(1, 9);
-        grid.addAliveCell(2, 9);
-        grid.addAliveCell(3, 9);
-        grid.addAliveCell(4, 9);
-        grid.addAliveCell(5, 9);
-        grid.addAliveCell(8, 9);
-        grid.addAliveCell(9, 9);
-        grid.addAliveCell(10, 9);
-        
-        grid.addAliveCell(1, 10);
-        grid.addAliveCell(2, 10);
-        grid.addAliveCell(3, 10);
-        grid.addAliveCell(5, 10);
-        grid.addAliveCell(7, 10);
-        grid.addAliveCell(9, 10);
-        grid.addAliveCell(10, 10);
-        
-        grid.addAliveCell(4, 11);
-        grid.addAliveCell(5, 11);
-        grid.addAliveCell(8, 11);
-        grid.addAliveCell(9, 11);
-        grid.addAliveCell(10, 11);
-        
+        grid.addAliveCell(new CellImpl(2, 3));
+        grid.addAliveCell(new CellImpl(3, 3));
+        grid.addAliveCell(new CellImpl(4, 3));
+        grid.addAliveCell(new CellImpl(7, 3));
+        grid.addAliveCell(new CellImpl(8, 3));
+        grid.addAliveCell(new CellImpl(9, 3));
+        grid.addAliveCell(new CellImpl(10, 3));
+        grid.addAliveCell(new CellImpl(11, 3));
+
+        grid.addAliveCell(new CellImpl(1, 4));
+        grid.addAliveCell(new CellImpl(3, 4));
+        grid.addAliveCell(new CellImpl(5, 4));
+        grid.addAliveCell(new CellImpl(7, 4));
+        grid.addAliveCell(new CellImpl(9, 4));
+        grid.addAliveCell(new CellImpl(11, 4));
+
+        grid.addAliveCell(new CellImpl(1, 5));
+        grid.addAliveCell(new CellImpl(2, 5));
+        grid.addAliveCell(new CellImpl(3, 5));
+        grid.addAliveCell(new CellImpl(4, 5));
+        grid.addAliveCell(new CellImpl(6, 5));
+        grid.addAliveCell(new CellImpl(8, 5));
+        grid.addAliveCell(new CellImpl(10, 5));
+
+        grid.addAliveCell(new CellImpl(5, 6));
+        grid.addAliveCell(new CellImpl(6, 6));
+        grid.addAliveCell(new CellImpl(7, 6));
+
+        grid.addAliveCell(new CellImpl(2, 7));
+        grid.addAliveCell(new CellImpl(4, 7));
+        grid.addAliveCell(new CellImpl(6, 7));
+        grid.addAliveCell(new CellImpl(8, 7));
+        grid.addAliveCell(new CellImpl(9, 7));
+        grid.addAliveCell(new CellImpl(10, 7));
+        grid.addAliveCell(new CellImpl(11, 7));
+
+        grid.addAliveCell(new CellImpl(1, 8));
+        grid.addAliveCell(new CellImpl(3, 8));
+        grid.addAliveCell(new CellImpl(5, 8));
+        grid.addAliveCell(new CellImpl(7, 8));
+        grid.addAliveCell(new CellImpl(9, 8));
+        grid.addAliveCell(new CellImpl(11, 8));
+
+        grid.addAliveCell(new CellImpl(1, 9));
+        grid.addAliveCell(new CellImpl(2, 9));
+        grid.addAliveCell(new CellImpl(3, 9));
+        grid.addAliveCell(new CellImpl(4, 9));
+        grid.addAliveCell(new CellImpl(5, 9));
+        grid.addAliveCell(new CellImpl(8, 9));
+        grid.addAliveCell(new CellImpl(9, 9));
+        grid.addAliveCell(new CellImpl(10, 9));
+
+        grid.addAliveCell(new CellImpl(1, 10));
+        grid.addAliveCell(new CellImpl(2, 10));
+        grid.addAliveCell(new CellImpl(3, 10));
+        grid.addAliveCell(new CellImpl(5, 10));
+        grid.addAliveCell(new CellImpl(7, 10));
+        grid.addAliveCell(new CellImpl(9, 10));
+        grid.addAliveCell(new CellImpl(10, 10));
+
+        grid.addAliveCell(new CellImpl(4, 11));
+        grid.addAliveCell(new CellImpl(5, 11));
+        grid.addAliveCell(new CellImpl(8, 11));
+        grid.addAliveCell(new CellImpl(9, 11));
+        grid.addAliveCell(new CellImpl(10, 11));
+
         return grid;
     }
-
 
 }

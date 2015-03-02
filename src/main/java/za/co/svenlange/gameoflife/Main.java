@@ -24,7 +24,8 @@ public class Main extends Application {
         stage.setTitle("Conway's Game of Life by Sven Lange");
         stage.setMaximized(true);
 
-        Grid grid = PredefinedGrids.getActionGrid(getWidth(), getHeight());
+//        Grid grid = za.co.svenlange.gameoflife.naive.PredefinedGrids.getActionGrid(getWidth(), getHeight());
+        Grid grid = za.co.svenlange.gameoflife.set.PredefinedGrids.getActionGrid(getWidth(), getHeight());
 
         final Group root = new Group();
         final Canvas canvas = new Canvas(getWidth(), getHeight());

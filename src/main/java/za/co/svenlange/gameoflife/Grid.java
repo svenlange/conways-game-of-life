@@ -10,15 +10,11 @@ import java.util.Collection;
 public interface Grid {
     Grid getNextGeneration();
 
-    boolean isCellAlive(int x, int y);
-
     Collection<Cell> getAliveCells();
 
-    int getNumberOfNeighbours(int i, int j);
+    void addAliveCell(int x, int y);
 
-    void addAliveCell(Cell cell);
+    boolean isCellAlive(int x, int y);
 
-    int getWidth();
-
-    int getHeight();
+    long getNumberOfAliveNeighbours(int x, int y);
 }

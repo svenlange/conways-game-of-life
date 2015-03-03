@@ -34,12 +34,12 @@ public class Game implements Grid {
     @Override
     public Grid getNextGeneration() {
         Set<Cell> survivors = aliveCells.stream()
-                .filter(aliveCell -> getNumberOfAliveNeighbours(aliveCell.getX(), aliveCell.getY()) == 2 || getNumberOfAliveNeighbours(aliveCell.getX(), aliveCell.getY()) == 3)
+                .filter(aliveCell -> getNumberOfAliveNeighbors(aliveCell.getX(), aliveCell.getY()) == 2 || getNumberOfAliveNeighbors(aliveCell.getX(), aliveCell.getY()) == 3)
                 .collect(toSet());
 
         Set<Cell> cellsThatAreReborn = aliveCells.stream().flatMap(aliveCell -> getNeighbors(aliveCell).stream())
                 .filter(neighbor -> !aliveCells.contains(neighbor))
-                .filter(neighbor -> getNumberOfAliveNeighbours(neighbor.getX(), neighbor.getY()) == 3)
+                .filter(neighbor -> getNumberOfAliveNeighbors(neighbor.getX(), neighbor.getY()) == 3)
                 .collect(toSet());
 
         Set<Cell> nextGeneration = new HashSet<>();
@@ -75,7 +75,7 @@ public class Game implements Grid {
     }
 
     @Override
-    public long getNumberOfAliveNeighbours(int x, int y) {
+    public long getNumberOfAliveNeighbors(int x, int y) {
         return getNeighbors(new Cell(x, y)).stream().filter(aliveCells::contains).count();
     }
 }

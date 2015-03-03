@@ -16,5 +16,5 @@ public interface Grid {
 
     boolean isCellAlive(int x, int y);
 
-    long getNumberOfAliveNeighbours(int x, int y);
+    long getNumberOfAliveNeighbors(int x, int y);
 }

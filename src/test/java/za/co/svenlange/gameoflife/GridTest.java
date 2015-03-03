@@ -44,7 +44,7 @@ public class GridTest {
     @Test
     public void aSingleCellDiesAfterFirstGeneration() {
         grid.addAliveCell(2, 3);
-        assertEquals(0, grid.getNumberOfAliveNeighbours(2, 3));
+        assertEquals(0, grid.getNumberOfAliveNeighbors(2, 3));
         assertFalse(grid.getNextGeneration().isCellAlive(2, 3));
     }
 
@@ -53,7 +53,7 @@ public class GridTest {
         grid.addAliveCell(2, 2);
         grid.addAliveCell(2, 3);
         grid.addAliveCell(2, 4);
-        assertEquals(2, grid.getNumberOfAliveNeighbours(2, 3));
+        assertEquals(2, grid.getNumberOfAliveNeighbors(2, 3));
         assertTrue(grid.getNextGeneration().isCellAlive(2, 3));
     }
 
@@ -63,7 +63,7 @@ public class GridTest {
         grid.addAliveCell(2, 2);
         grid.addAliveCell(2, 4);
         grid.addAliveCell(1, 4);
-        assertEquals(3, grid.getNumberOfAliveNeighbours(2, 3));
+        assertEquals(3, grid.getNumberOfAliveNeighbors(2, 3));
         assertTrue(grid.getNextGeneration().isCellAlive(2, 3));
     }
 
@@ -72,21 +72,21 @@ public class GridTest {
         grid.addAliveCell(2, 2);
         grid.addAliveCell(1, 4);
         grid.addAliveCell(2, 4);
-        assertEquals(3, grid.getNumberOfAliveNeighbours(2, 3));
+        assertEquals(3, grid.getNumberOfAliveNeighbors(2, 3));
         assertTrue(grid.getNextGeneration().isCellAlive(2, 3));
     }
 
     @Test
     public void neighbourCountIsZero() {
         grid.addAliveCell(1, 1);
-        assertEquals(0, grid.getNumberOfAliveNeighbours(1, 1));
+        assertEquals(0, grid.getNumberOfAliveNeighbors(1, 1));
     }
 
     @Test
     public void neighbourCountIsOne() {
         grid.addAliveCell(0, 0);
         grid.addAliveCell(1, 1);
-        assertEquals(1, grid.getNumberOfAliveNeighbours(1, 1));
+        assertEquals(1, grid.getNumberOfAliveNeighbors(1, 1));
     }
 
     @Test
@@ -94,7 +94,7 @@ public class GridTest {
         grid.addAliveCell(0, 0);
         grid.addAliveCell(1, 1);
         grid.addAliveCell(2, 2);
-        assertEquals(2, grid.getNumberOfAliveNeighbours(1, 1));
+        assertEquals(2, grid.getNumberOfAliveNeighbors(1, 1));
     }
 
     @Test
@@ -103,7 +103,7 @@ public class GridTest {
         grid.addAliveCell(1, 1);
         grid.addAliveCell(0, 1);
         grid.addAliveCell(2, 2);
-        assertEquals(3, grid.getNumberOfAliveNeighbours(1, 1));
+        assertEquals(3, grid.getNumberOfAliveNeighbors(1, 1));
     }
 
     @Test

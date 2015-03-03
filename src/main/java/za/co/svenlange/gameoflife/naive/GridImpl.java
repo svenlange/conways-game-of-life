@@ -25,18 +25,18 @@ public class GridImpl implements Grid {
     }
 
     @Override
-    public long getNumberOfAliveNeighbours(int i, int j) {
-        long neighbours = 0;
+    public long getNumberOfAliveNeighbors(int x, int y) {
+        long numberOfAliveNeighbors = 0;
 
-        for (int x = calculatePosition(i); x <= i + 1 && x < getWidth(); x++) {
-            for (int y = calculatePosition(j); y <= j + 1 && y < getHeight(); y++) {
-                if (isCellAlive(x, y) && !(i == x && j == y)) {
-                    neighbours++;
+        for (int i = calculatePosition(x); i <= x + 1 && i < getWidth(); i++) {
+            for (int j = calculatePosition(y); j <= y + 1 && j < getHeight(); j++) {
+                if (isCellAlive(i, j) && !(x == i && y == j)) {
+                    numberOfAliveNeighbors++;
                 }
             }
         }
 
-        return neighbours;
+        return numberOfAliveNeighbors;
     }
 
     private int calculatePosition(int position) {
@@ -68,7 +68,7 @@ public class GridImpl implements Grid {
     }
 
     private boolean isAliveInNextGeneration(int x, int y) {
-        return isCellAlive(x, y) && getNumberOfAliveNeighbours(x, y) == 2 || getNumberOfAliveNeighbours(x, y) == 3;
+        return isCellAlive(x, y) && getNumberOfAliveNeighbors(x, y) == 2 || getNumberOfAliveNeighbors(x, y) == 3;
     }
 
     @Override

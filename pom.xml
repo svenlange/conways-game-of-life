@@ -36,6 +36,23 @@
                     </archive>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.1.5</version>
+                <configuration>
+                    <verbose>true</verbose>
+                    <targetClasses>
+                        <param>za.co.svenlange.gameoflife.Cell</param>
+                        <param>za.co.svenlange.gameoflife.Grid</param>
+                        <param>za.co.svenlange.gameoflife.naive.GridImpl</param>
+                        <param>za.co.svenlange.gameoflife.set.Game</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>za.co.svenlange.gameoflife.GridTest</param>
+                    </targetTests>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 

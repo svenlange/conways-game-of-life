@@ -1,4 +1,4 @@
-package za.co.svenlange.gameoflife.naive;
+package za.co.svenlange.gameoflife.array;
 
 import za.co.svenlange.gameoflife.Grid;
 
@@ -10,7 +10,7 @@ import za.co.svenlange.gameoflife.Grid;
 public abstract class PredefinedGrids {
 
     public static Grid getBlinkerGrid() {
-        Grid grid = new GridImpl(6, 6);
+        Grid grid = new GridWithArray(6, 6);
         grid.addAliveCell(2, 2);
         grid.addAliveCell(2, 3);
         grid.addAliveCell(2, 4);
@@ -18,7 +18,7 @@ public abstract class PredefinedGrids {
     }
 
     public static Grid getBeaconGrid() {
-        Grid grid = new GridImpl(8, 8);
+        Grid grid = new GridWithArray(8, 8);
         grid.addAliveCell(1, 1);
         grid.addAliveCell(1, 2);
         grid.addAliveCell(2, 1);
@@ -31,7 +31,7 @@ public abstract class PredefinedGrids {
     }
 
     public static Grid getOctagon2Grid() {
-        Grid grid = new GridImpl(10, 10);
+        Grid grid = new GridWithArray(10, 10);
         grid.addAliveCell(4, 1);
         grid.addAliveCell(5, 1);
         grid.addAliveCell(3, 2);
@@ -52,7 +52,7 @@ public abstract class PredefinedGrids {
     }
 
     public static Grid getActionGrid(int width, int height) {
-        Grid grid = new GridImpl(width, height);
+        Grid grid = new GridWithArray(width, height);
 
         for (int i = 0; i < width; i++) {
             grid.addAliveCell(i, height / 2);
@@ -62,7 +62,7 @@ public abstract class PredefinedGrids {
     }
 
     public static Grid getFlowerOfEden() {
-        Grid grid = new GridImpl(13, 13);
+        Grid grid = new GridWithArray(13, 13);
 
         grid.addAliveCell(2, 1);
         grid.addAliveCell(3, 1);

@@ -4,8 +4,8 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import za.co.svenlange.gameoflife.naive.GridImpl;
-import za.co.svenlange.gameoflife.set.Game;
+import za.co.svenlange.gameoflife.array.GridWithArray;
+import za.co.svenlange.gameoflife.set.GridWithSet;
 
 import static org.junit.Assert.*;
 
@@ -22,7 +22,7 @@ public class GridTest {
 
     @Parameterized.Parameters(name = "{index}: class={0}")
     public static Class[] getImplementaionClasses() {
-        return new Class[]{Game.class, GridImpl.class};
+        return new Class[]{GridWithSet.class, GridWithArray.class};
     }
 
     @Before

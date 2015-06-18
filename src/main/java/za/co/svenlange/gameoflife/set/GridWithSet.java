@@ -9,13 +9,13 @@ import java.util.Set;
 
 import static java.util.stream.Collectors.toSet;
 
-public class Game implements Grid {
+public class GridWithSet implements Grid {
 
-    public Game() {
+    public GridWithSet() {
         this.aliveCells = new HashSet<>();
     }
 
-    private Game(Set<Cell> aliveCells) {
+    private GridWithSet(Set<Cell> aliveCells) {
         this.aliveCells = aliveCells;
     }
 
@@ -46,7 +46,7 @@ public class Game implements Grid {
         nextGeneration.addAll(survivors);
         nextGeneration.addAll(cellsThatAreReborn);
 
-        return new Game(nextGeneration);
+        return new GridWithSet(nextGeneration);
     }
 
     private Set<Cell> getNeighbors(Cell cell) {

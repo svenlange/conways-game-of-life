@@ -1,4 +1,4 @@
-package za.co.svenlange.gameoflife.naive;
+package za.co.svenlange.gameoflife.array;
 
 import za.co.svenlange.gameoflife.Cell;
 import za.co.svenlange.gameoflife.Grid;
@@ -8,19 +8,17 @@ import java.util.Collection;
 import java.util.List;
 
 /**
- * GridImpl
- *
  * @author Sven Lange
  */
-public class GridImpl implements Grid {
+public class GridWithArray implements Grid {
 
     private final State[][] grid;
 
-    public GridImpl() {
+    public GridWithArray() {
         this(100, 100);
     }
 
-    public GridImpl(int width, int height) {
+    public GridWithArray(int width, int height) {
         grid = new State[width][height];
     }
 
@@ -54,7 +52,7 @@ public class GridImpl implements Grid {
 
     @Override
     public Grid getNextGeneration() {
-        Grid nextGrid = new GridImpl(getWidth(), getHeight());
+        Grid nextGrid = new GridWithArray(getWidth(), getHeight());
 
         for (int x = 0; x < getWidth(); x++) {
             for (int y = 0; y < getHeight(); y++) {

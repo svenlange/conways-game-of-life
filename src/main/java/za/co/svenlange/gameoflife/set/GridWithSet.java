@@ -33,20 +33,27 @@ public class GridWithSet implements Grid {
 
     @Override
     public Grid getNextGeneration() {
-        Set<Cell> survivors = aliveCells.stream()
-                .filter(aliveCell -> getNumberOfAliveNeighbors(aliveCell.getX(), aliveCell.getY()) == 2 || getNumberOfAliveNeighbors(aliveCell.getX(), aliveCell.getY()) == 3)
-                .collect(toSet());
+        Set<Cell> survivingCells = getSurvivingCells();
+        Set<Cell> newBornCells = getNewBornCells();
 
-        Set<Cell> cellsThatAreReborn = aliveCells.stream().flatMap(aliveCell -> getNeighbors(aliveCell).stream())
+        Set<Cell> nextGeneration = new HashSet<>();
+        nextGeneration.addAll(survivingCells);
+        nextGeneration.addAll(newBornCells);
+
+        return new GridWithSet(nextGeneration);
+    }
+
+    private Set<Cell> getSurvivingCells() {
+        return aliveCells.stream()
+                    .filter(aliveCell -> getNumberOfAliveNeighbors(aliveCell.getX(), aliveCell.getY()) == 2 || getNumberOfAliveNeighbors(aliveCell.getX(), aliveCell.getY()) == 3)
+                    .collect(toSet());
+    }
+
+    private Set<Cell> getNewBornCells() {
+        return aliveCells.stream().flatMap(aliveCell -> getNeighbors(aliveCell).stream())
                 .filter(neighbor -> !aliveCells.contains(neighbor))
                 .filter(neighbor -> getNumberOfAliveNeighbors(neighbor.getX(), neighbor.getY()) == 3)
                 .collect(toSet());
-
-        Set<Cell> nextGeneration = new HashSet<>();
-        nextGeneration.addAll(survivors);
-        nextGeneration.addAll(cellsThatAreReborn);
-
-        return new GridWithSet(nextGeneration);
     }
 
     private Set<Cell> getNeighbors(Cell cell) {

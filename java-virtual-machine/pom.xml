@@ -4,34 +4,25 @@
                       http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>za.co.svenlange</groupId>
-    <artifactId>conways-game-of-life</artifactId>
+    <groupId>za.co.svenlange.cgol</groupId>
+    <artifactId>parent</artifactId>
     <version>1.0</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>core-interfaces</module>
+        <module>java-implementations</module>
+        <module>scala-implementations</module>
+        <module>test</module>
+        <module>graphical-user-interface</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <scalaVersion>2.11.7</scalaVersion>
     </properties>
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.codehaus.mojo</groupId>
-                <artifactId>build-helper-maven-plugin</artifactId>
-                <version>1.9.1</version>
-                <executions>
-                    <execution>
-                        <phase>generate-sources</phase>
-                        <goals><goal>add-source</goal></goals>
-                        <configuration>
-                            <sources>
-                                <source>src/main/scala</source>
-                            </sources>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -41,57 +32,6 @@
                     <target>1.8</target>
                 </configuration>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>2.6</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <mainClass>za.co.svenlange.gameoflife.Main</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
-            </plugin>
-
-            <plugin>
-                <groupId>net.alchim31.maven</groupId>
-                <artifactId>scala-maven-plugin</artifactId>
-                <version>3.2.1</version>
-            </plugin>
-
-            <plugin>
-                <groupId>org.pitest</groupId>
-                <artifactId>pitest-maven</artifactId>
-                <version>1.1.5</version>
-                <configuration>
-                    <verbose>true</verbose>
-                    <targetClasses>
-                        <param>za.co.svenlange.gameoflife.Cell</param>
-                        <param>za.co.svenlange.gameoflife.Grid</param>
-                        <param>za.co.svenlange.gameoflife.array.GridWithArray</param>
-                        <param>za.co.svenlange.gameoflife.set.GridWithSet</param>
-                    </targetClasses>
-                    <targetTests>
-                        <param>za.co.svenlange.gameoflife.GridTest</param>
-                    </targetTests>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.scala-lang</groupId>
-            <artifactId>scala-library</artifactId>
-            <version>${scalaVersion}</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
 </project>

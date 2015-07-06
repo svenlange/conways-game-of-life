@@ -1,4 +1,4 @@
 Offene Implementierungen (ToDo)
 
-- looluptable
+- lookup table
 - quad tree

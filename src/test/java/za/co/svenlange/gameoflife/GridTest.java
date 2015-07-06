@@ -22,7 +22,7 @@ public class GridTest {
 
     @Parameterized.Parameters(name = "{index}: class={0}")
     public static Class[] getImplementaionClasses() {
-        return new Class[]{GridWithSet.class, GridWithArray.class};
+        return new Class[]{GridWithSet.class, GridWithArray.class, za.co.svenlange.gameoflife.proofofconcept.Grid.class};
     }
 
     @Before

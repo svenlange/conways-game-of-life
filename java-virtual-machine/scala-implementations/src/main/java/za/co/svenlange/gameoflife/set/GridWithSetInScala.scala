@@ -1,25 +1,24 @@
-package za.co.svenlange.gameoflife.proofofconcept
+package za.co.svenlange.gameoflife.set
 
 import java.util
 
-import za.co.svenlange.gameoflife.Cell
 import za.co.svenlange.gameoflife.CellExtensions._
+import za.co.svenlange.gameoflife.{Cell, Grid}
 
 import scala.collection.JavaConverters._
 import scala.collection.mutable
 
-class Grid extends za.co.svenlange.gameoflife.Grid {
+class GridWithSetInScala(aliveCells: mutable.HashSet[Cell]) extends Grid {
 
-  val aliveCells = new mutable.HashSet[Cell]()
+  def this() {
+    this(new mutable.HashSet[Cell]())
+  }
 
-  override def getNextGeneration: za.co.svenlange.gameoflife.Grid = {
-//    val survivors = aliveCells.filter((getNumberOfAliveNeighbors(_) == 2) || (getNumberOfAliveNeighbors(_) == 3))
-//
-//    // TODO dead cells with living neighbors == 3
-//    val cellsThatAreReborn = aliveCells.filter(???)
-//
-//    new za.co.svenlange.gameoflife.Grid(survivors ::: cellsThatAreReborn)
-    ???
+  override def getNextGeneration: Grid = {
+    val survivors = aliveCells.filter(cell => getNumberOfAliveNeighbors(cell) == 2 || getNumberOfAliveNeighbors(cell) == 3)
+    val cellsThatAreReborn = aliveCells.flatMap(_.neighbors).diff(aliveCells).filter(getNumberOfAliveNeighbors(_) == 3)
+    val value = survivors ++ cellsThatAreReborn
+    new GridWithSetInScala(value)
   }
 
   override def getNumberOfAliveNeighbors(x: Int, y: Int): Long = {
@@ -37,6 +36,5 @@ class Grid extends za.co.svenlange.gameoflife.Grid {
   }
 
   override def getAliveCells: util.Collection[Cell] = aliveCells.asJava
-
 
 }

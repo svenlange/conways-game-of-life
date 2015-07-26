@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import za.co.svenlange.gameoflife.array.GridWithArray;
 import za.co.svenlange.gameoflife.set.GridWithSet;
+import za.co.svenlange.gameoflife.set.GridWithSetInScala;
 
 import static org.junit.Assert.*;
 
@@ -22,7 +23,7 @@ public class GridTest {
 
     @Parameterized.Parameters(name = "{index}: class={0}")
     public static Class[] getImplementaionClasses() {
-        return new Class[]{GridWithSet.class, GridWithArray.class};
+        return new Class[]{GridWithSet.class, GridWithArray.class, GridWithSetInScala.class};
     }
 
     @Before

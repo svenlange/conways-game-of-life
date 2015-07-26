@@ -1,0 +1,20 @@
+@startuml
+skinparam componentStyle uml2
+
+[Core Interfaces] as core
+[Test] as test
+[Java Implementations] as java
+[Scala Implementations] as scala
+[Graphical User Interface] as gui
+
+core <-- test
+
+test <-- java
+
+test <-- scala
+
+java <-- gui
+scala <-- gui
+
+
+@enduml

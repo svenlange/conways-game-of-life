@@ -1,14 +1,14 @@
-package za.co.svenlange.gameoflife.set
+package za.co.svenlange.cgol.set
 
 import java.util
 
-import za.co.svenlange.gameoflife.CellExtensions._
+import za.co.svenlange.cgol.CellExtensions._
 import za.co.svenlange.gameoflife.{Cell, Grid}
 
 import scala.collection.JavaConverters._
 import scala.collection.mutable
 
-class GridWithSetInScala(aliveCells: mutable.HashSet[Cell]) extends Grid {
+class GridWithSet(aliveCells: mutable.HashSet[Cell]) extends Grid {
 
   def this() {
     this(new mutable.HashSet[Cell]())
@@ -18,7 +18,7 @@ class GridWithSetInScala(aliveCells: mutable.HashSet[Cell]) extends Grid {
     val survivors = aliveCells.filter(cell => getNumberOfAliveNeighbors(cell) == 2 || getNumberOfAliveNeighbors(cell) == 3)
     val cellsThatAreReborn = aliveCells.flatMap(_.neighbors).diff(aliveCells).filter(getNumberOfAliveNeighbors(_) == 3)
     val value = survivors ++ cellsThatAreReborn
-    new GridWithSetInScala(value)
+    new GridWithSet(value)
   }
 
   override def getNumberOfAliveNeighbors(x: Int, y: Int): Long = {

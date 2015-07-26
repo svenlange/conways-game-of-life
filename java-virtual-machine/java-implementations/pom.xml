@@ -15,7 +15,7 @@
     <dependencies>
         <dependency>
             <groupId>za.co.svenlange.cgol</groupId>
-            <artifactId>core-interfaces</artifactId>
+            <artifactId>test</artifactId>
             <version>1.0</version>
         </dependency>
     </dependencies>

@@ -12,37 +12,20 @@
 
     <artifactId>scala-implementations</artifactId>
 
-    <properties>
-        <scalaVersion>2.11.7</scalaVersion>
-    </properties>
-
     <build>
         <plugins>
-            <!--<plugin>-->
-            <!--<groupId>org.codehaus.mojo</groupId>-->
-            <!--<artifactId>build-helper-maven-plugin</artifactId>-->
-            <!--<version>1.9.1</version>-->
-            <!--<executions>-->
-            <!--<execution>-->
-            <!--<phase>generate-sources</phase>-->
-            <!--<goals><goal>add-source</goal></goals>-->
-            <!--<configuration>-->
-            <!--<sources>-->
-            <!--<source>src/main/scala</source>-->
-            <!--</sources>-->
-            <!--</configuration>-->
-            <!--</execution>-->
-            <!--</executions>-->
-            <!--</plugin>-->
-
-
             <plugin>
                 <groupId>net.alchim31.maven</groupId>
                 <artifactId>scala-maven-plugin</artifactId>
                 <version>3.2.1</version>
-                <configuration>
-                    <sourceDir>${project.build.sourceDirectory}</sourceDir>
-                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>compile</goal>
+                            <goal>testCompile</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
@@ -50,13 +33,13 @@
     <dependencies>
         <dependency>
             <groupId>za.co.svenlange.cgol</groupId>
-            <artifactId>core-interfaces</artifactId>
+            <artifactId>test</artifactId>
             <version>1.0</version>
         </dependency>
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
-            <version>${scalaVersion}</version>
+            <version>2.11.7</version>
         </dependency>
     </dependencies>
 </project>

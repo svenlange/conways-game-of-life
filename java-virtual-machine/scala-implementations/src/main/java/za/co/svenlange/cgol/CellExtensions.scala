@@ -1,4 +1,6 @@
-package za.co.svenlange.gameoflife
+package za.co.svenlange.cgol
+
+import za.co.svenlange.gameoflife.Cell
 
 import scala.collection.mutable
 

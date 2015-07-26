@@ -1,34 +1,18 @@
-package za.co.svenlange.gameoflife;
+package za.co.svenlange.cgol;
 
-import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import za.co.svenlange.gameoflife.array.GridWithArray;
-import za.co.svenlange.gameoflife.set.GridWithSet;
-import za.co.svenlange.gameoflife.set.GridWithSetInScala;
+import za.co.svenlange.gameoflife.Grid;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
-@RunWith(value = Parameterized.class)
-public class GridTest {
+abstract public class GridTest {
 
-    private final Class gridClass;
+    private Grid grid;
 
-    private za.co.svenlange.gameoflife.Grid grid;
-
-    public GridTest(Class gridClass) {
-        this.gridClass = gridClass;
-    }
-
-    @Parameterized.Parameters(name = "{index}: class={0}")
-    public static Class[] getImplementaionClasses() {
-        return new Class[]{GridWithSet.class, GridWithArray.class, GridWithSetInScala.class};
-    }
-
-    @Before
-    public void setUp() throws IllegalAccessException, InstantiationException {
-        grid = (Grid) gridClass.newInstance();
+    public GridTest(Grid grid) {
+        this.grid = grid;
     }
 
     @Test

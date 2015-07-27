@@ -1,7 +1,5 @@
 package za.co.svenlange.cgol.set
 
-import java.util
-
 import za.co.svenlange.cgol.CellExtensions._
 import za.co.svenlange.gameoflife.{Cell, Grid}
 
@@ -14,27 +12,26 @@ class GridWithSet(aliveCells: mutable.HashSet[Cell]) extends Grid {
     this(new mutable.HashSet[Cell]())
   }
 
-  override def getNextGeneration: Grid = {
+  override def getNextGeneration = {
     val survivors = aliveCells.filter(cell => getNumberOfAliveNeighbors(cell) == 2 || getNumberOfAliveNeighbors(cell) == 3)
     val cellsThatAreReborn = aliveCells.flatMap(_.neighbors).diff(aliveCells).filter(getNumberOfAliveNeighbors(_) == 3)
-    val value = survivors ++ cellsThatAreReborn
-    new GridWithSet(value)
+    new GridWithSet(survivors ++ cellsThatAreReborn)
   }
 
-  override def getNumberOfAliveNeighbors(x: Int, y: Int): Long = {
-    new Cell(x, y).neighbors.intersect(aliveCells).size.toLong
+  override def getNumberOfAliveNeighbors(x: Int, y: Int) = {
+    getNumberOfAliveNeighbors(new Cell(x, y))
   }
 
-  def getNumberOfAliveNeighbors(cell: Cell): Long = {
+  def getNumberOfAliveNeighbors(cell: Cell) = {
     cell.neighbors.intersect(aliveCells).size.toLong
   }
 
-  override def isCellAlive(x: Int, y: Int): Boolean = aliveCells.contains(new Cell(x, y))
+  override def isCellAlive(x: Int, y: Int) = aliveCells.contains(new Cell(x, y))
 
-  override def addAliveCell(x: Int, y: Int): Unit = {
+  override def addAliveCell(x: Int, y: Int) = {
     aliveCells.add(new Cell(x, y))
   }
 
-  override def getAliveCells: util.Collection[Cell] = aliveCells.asJava
+  override def getAliveCells = aliveCells.asJava
 
 }

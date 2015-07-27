@@ -1,4 +1,4 @@
-package za.co.svenlange.cgol
+package za.co.svenlange.cgol.set
 
 import za.co.svenlange.gameoflife.Cell
 

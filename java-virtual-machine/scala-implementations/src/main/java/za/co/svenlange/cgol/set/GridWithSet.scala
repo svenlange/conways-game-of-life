@@ -1,6 +1,6 @@
 package za.co.svenlange.cgol.set
 
-import za.co.svenlange.cgol.CellExtensions._
+import CellExtensions._
 import za.co.svenlange.gameoflife.{Cell, Grid}
 
 import scala.collection.JavaConverters._

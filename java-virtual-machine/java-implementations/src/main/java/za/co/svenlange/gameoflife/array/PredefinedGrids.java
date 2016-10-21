@@ -51,6 +51,36 @@ public abstract class PredefinedGrids {
         return grid;
     }
 
+    public static Grid getFumarole() {
+        Grid grid = new GridWithArray(10,10);
+        grid.addAliveCell(1, 7);
+        grid.addAliveCell(2, 7);
+        grid.addAliveCell(7, 7);
+        grid.addAliveCell(8, 7);
+
+        grid.addAliveCell(1, 6);
+        grid.addAliveCell(3, 6);
+        grid.addAliveCell(6, 6);
+        grid.addAliveCell(8, 6);
+
+        grid.addAliveCell(3, 5);
+        grid.addAliveCell(6, 5);
+
+        grid.addAliveCell(2, 4);
+        grid.addAliveCell(7, 4);
+
+        grid.addAliveCell(2, 3);
+        grid.addAliveCell(7, 3);
+
+        grid.addAliveCell(2, 2);
+        grid.addAliveCell(7, 2);
+
+        grid.addAliveCell(4, 1);
+        grid.addAliveCell(5, 1);
+        return grid;
+    }
+
+
     public static Grid getActionGrid(int width, int height) {
         Grid grid = new GridWithArray(width, height);
 

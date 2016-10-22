@@ -95,7 +95,7 @@ public class GridWithArray implements Grid {
         return grid[0].length;
     }
 
-    private static enum State {
+    private enum State {
         ALIVE
     }
 }

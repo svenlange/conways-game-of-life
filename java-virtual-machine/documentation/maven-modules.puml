@@ -8,13 +8,14 @@ skinparam componentStyle uml2
 [Graphical User Interface] as gui
 
 core <-- test
+test -> [JUnit]
 
 test <-- java
 
 test <-- scala
+scala -> [Scala]
 
 java <-- gui
 scala <-- gui
-
 
 @enduml

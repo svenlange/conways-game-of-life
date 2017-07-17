@@ -1,5 +1,5 @@
 # JVM implementations
 
-## Maven Modules
+## Maven module dependencies
 
 ![""](documentation/maven-modules.png)

@@ -8,7 +8,6 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import java.util.Collection;
@@ -18,19 +17,21 @@ public class Main extends Application {
     private static final int CELL_SIZE = 2;
     private static final Color BACKGROUND_COLOR = Color.WHITE;
     private static final Color CELL_COLOR = Color.ORANGERED;
+    public static final int WIDTH = 800;
+    public static final int HEIGHT = 600;
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage) {
         stage.setTitle("Conway's Game of Life by Sven Lange");
-        stage.setMaximized(true);
+        stage.setMaxWidth(WIDTH);
+        stage.setMaxHeight(HEIGHT);
 
-        Grid grid = za.co.svenlange.gameoflife.array.PredefinedGrids.getActionGrid(getWidth(), getHeight());
-//        Grid grid = za.co.svenlange.gameoflife.set.PredefinedGrids.getActionGrid(getWidth(), getHeight());
+        Grid grid = PredefinedGrids.getActionGrid(WIDTH, HEIGHT);
 
         final Group root = new Group();
-        final Canvas canvas = new Canvas(getWidth(), getHeight());
+        final Canvas canvas = new Canvas(WIDTH, HEIGHT);
         root.getChildren().add(canvas);
-        stage.setScene(new Scene(root, getWidth(), getHeight(), BACKGROUND_COLOR));
+        stage.setScene(new Scene(root, WIDTH, HEIGHT, BACKGROUND_COLOR));
         stage.show();
 
         final GridService service = new GridService(grid);
@@ -40,16 +41,6 @@ public class Main extends Application {
             service.restart();
         });
         service.start();
-    }
-
-    private static int getWidth() {
-        Double width = Screen.getPrimary().getVisualBounds().getWidth();
-        return width.intValue();
-    }
-
-    private static int getHeight() {
-        Double height = Screen.getPrimary().getVisualBounds().getHeight();
-        return height.intValue();
     }
 
     private void updateCanvas(Collection<Cell> aliveCells, Canvas canvas) {
@@ -68,7 +59,7 @@ public class Main extends Application {
     private class GridService extends Service<Grid> {
         private Grid grid;
 
-        public GridService(Grid grid) {
+        GridService(Grid grid) {
             this.grid = grid;
         }
 
@@ -77,7 +68,7 @@ public class Main extends Application {
             return new Task<Grid>() {
 
                 @Override
-                protected Grid call() throws Exception {
+                protected Grid call() {
                     grid = grid.getNextGeneration();
                     return grid;
                 }

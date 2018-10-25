@@ -15,7 +15,7 @@ import java.util.Collection;
 
 public class Main extends Application {
 
-    private static final int CELL_SIZE = 1;
+    private static final int CELL_SIZE = 2;
     private static final Color BACKGROUND_COLOR = Color.WHITE;
     private static final Color CELL_COLOR = Color.ORANGERED;
 
@@ -24,8 +24,8 @@ public class Main extends Application {
         stage.setTitle("Conway's Game of Life by Sven Lange");
         stage.setMaximized(true);
 
-//        Grid grid = za.co.svenlange.gameoflife.naive.PredefinedGrids.getActionGrid(getWidth(), getHeight());
-        Grid grid = za.co.svenlange.gameoflife.set.PredefinedGrids.getActionGrid(getWidth(), getHeight());
+        Grid grid = za.co.svenlange.gameoflife.array.PredefinedGrids.getActionGrid(getWidth(), getHeight());
+//        Grid grid = za.co.svenlange.gameoflife.set.PredefinedGrids.getActionGrid(getWidth(), getHeight());
 
         final Group root = new Group();
         final Canvas canvas = new Canvas(getWidth(), getHeight());

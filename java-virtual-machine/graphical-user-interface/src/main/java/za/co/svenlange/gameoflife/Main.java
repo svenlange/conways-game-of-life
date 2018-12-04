@@ -9,6 +9,7 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import za.co.svenlange.gameoflife.array.PredefinedGrids;
 
 import java.util.Collection;
 
@@ -17,8 +18,8 @@ public class Main extends Application {
     private static final int CELL_SIZE = 2;
     private static final Color BACKGROUND_COLOR = Color.WHITE;
     private static final Color CELL_COLOR = Color.ORANGERED;
-    public static final int WIDTH = 800;
-    public static final int HEIGHT = 600;
+    private static final int WIDTH = 800;
+    private static final int HEIGHT = 600;
 
     @Override
     public void start(Stage stage) {

@@ -1,6 +1,6 @@
 package za.co.svenlange.gameoflife.set;
 
-import za.co.svenlange.gameoflife.Grid;
+import za.co.svenlange.gameoflife.core.Grid;
 
 public class PredefinedGrids {
 

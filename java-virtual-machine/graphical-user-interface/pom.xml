@@ -15,16 +15,11 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>2.6</version>
+                <groupId>org.openjfx</groupId>
+                <artifactId>javafx-maven-plugin</artifactId>
+                <version>0.0.8</version>
                 <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <mainClass>Main</mainClass>
-                        </manifest>
-                    </archive>
+                    <mainClass>za.co.svenlange.gameoflife.gui.Main</mainClass>
                 </configuration>
             </plugin>
         </plugins>
@@ -40,6 +35,11 @@
             <groupId>za.co.svenlange.cgol</groupId>
             <artifactId>scala-implementations</artifactId>
             <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-controls</artifactId>
+            <version>17.0.2</version>
         </dependency>
     </dependencies>
 

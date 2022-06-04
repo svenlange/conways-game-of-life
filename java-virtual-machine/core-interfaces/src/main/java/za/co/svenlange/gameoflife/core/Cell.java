@@ -1,4 +1,4 @@
-package za.co.svenlange.gameoflife;
+package za.co.svenlange.gameoflife.core;
 
 /**
  * Cell with coordinates

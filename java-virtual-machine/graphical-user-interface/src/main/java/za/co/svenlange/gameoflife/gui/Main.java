@@ -1,4 +1,4 @@
-package za.co.svenlange.gameoflife;
+package za.co.svenlange.gameoflife.gui;
 
 import javafx.application.Application;
 import javafx.concurrent.Service;
@@ -8,8 +8,10 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
+import za.co.svenlange.gameoflife.core.Cell;
+import za.co.svenlange.gameoflife.core.Grid;
+import za.co.svenlange.gameoflife.set.PredefinedGrids;
 
 import java.util.Collection;
 
@@ -18,19 +20,22 @@ public class Main extends Application {
     private static final int CELL_SIZE = 1;
     private static final Color BACKGROUND_COLOR = Color.WHITE;
     private static final Color CELL_COLOR = Color.ORANGERED;
+    public static final int WIDTH = 800;
+    public static final int HEIGHT = 600;
 
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("Conway's Game of Life by Sven Lange");
-        stage.setMaximized(true);
+        stage.setMaxWidth(WIDTH);
+        stage.setMaxHeight(HEIGHT);
 
 //        Grid grid = za.co.svenlange.gameoflife.naive.PredefinedGrids.getActionGrid(getWidth(), getHeight());
-        Grid grid = za.co.svenlange.gameoflife.set.PredefinedGrids.getActionGrid(getWidth(), getHeight());
+        Grid grid = PredefinedGrids.getActionGrid(WIDTH, HEIGHT);
 
         final Group root = new Group();
-        final Canvas canvas = new Canvas(getWidth(), getHeight());
+        final Canvas canvas = new Canvas(WIDTH, HEIGHT);
         root.getChildren().add(canvas);
-        stage.setScene(new Scene(root, getWidth(), getHeight(), BACKGROUND_COLOR));
+        stage.setScene(new Scene(root, WIDTH, HEIGHT, BACKGROUND_COLOR));
         stage.show();
 
         final GridService service = new GridService(grid);
@@ -40,16 +45,6 @@ public class Main extends Application {
             service.restart();
         });
         service.start();
-    }
-
-    private static int getWidth() {
-        Double width = Screen.getPrimary().getVisualBounds().getWidth();
-        return width.intValue();
-    }
-
-    private static int getHeight() {
-        Double height = Screen.getPrimary().getVisualBounds().getHeight();
-        return height.intValue();
     }
 
     private void updateCanvas(Collection<Cell> aliveCells, Canvas canvas) {

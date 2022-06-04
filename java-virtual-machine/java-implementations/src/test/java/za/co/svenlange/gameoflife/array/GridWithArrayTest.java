@@ -1,6 +1,6 @@
-package za.co.svenlange.cgol.array;
+package za.co.svenlange.gameoflife.array;
 
-import za.co.svenlange.cgol.GridTest;
+import za.co.svenlange.gameoflife.test.GridTest;
 import za.co.svenlange.gameoflife.array.GridWithArray;
 
 public class GridWithArrayTest extends GridTest {

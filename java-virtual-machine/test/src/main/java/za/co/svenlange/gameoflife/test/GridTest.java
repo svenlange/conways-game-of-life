@@ -1,11 +1,9 @@
-package za.co.svenlange.cgol;
+package za.co.svenlange.gameoflife.test;
 
-import org.junit.Test;
-import za.co.svenlange.gameoflife.Grid;
+import org.junit.jupiter.api.Test;
+import za.co.svenlange.gameoflife.core.Grid;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 abstract public class GridTest {
 

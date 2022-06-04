@@ -1,7 +1,7 @@
 package za.co.svenlange.gameoflife.set;
 
-import za.co.svenlange.gameoflife.Cell;
-import za.co.svenlange.gameoflife.Grid;
+import za.co.svenlange.gameoflife.core.Cell;
+import za.co.svenlange.gameoflife.core.Grid;
 
 import java.util.Collection;
 import java.util.HashSet;

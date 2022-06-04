@@ -1,4 +1,4 @@
-package za.co.svenlange.gameoflife;
+package za.co.svenlange.gameoflife.core;
 
 import java.util.Collection;
 

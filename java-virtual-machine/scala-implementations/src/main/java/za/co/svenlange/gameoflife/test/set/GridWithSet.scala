@@ -1,8 +1,7 @@
-package za.co.svenlange.cgol.set
+package za.co.svenlange.gameoflife.test.set
 
 import java.util
-
-import za.co.svenlange.gameoflife.{Cell, Grid}
+import za.co.svenlange.gameoflife.core.{Cell, Grid}
 
 import scala.collection.JavaConverters._
 import scala.collection.mutable

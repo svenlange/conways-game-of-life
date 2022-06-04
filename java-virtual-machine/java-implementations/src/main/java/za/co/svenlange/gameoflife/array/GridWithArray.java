@@ -1,7 +1,7 @@
 package za.co.svenlange.gameoflife.array;
 
-import za.co.svenlange.gameoflife.Cell;
-import za.co.svenlange.gameoflife.Grid;
+import za.co.svenlange.gameoflife.core.Cell;
+import za.co.svenlange.gameoflife.core.Grid;
 
 import java.util.ArrayList;
 import java.util.Collection;

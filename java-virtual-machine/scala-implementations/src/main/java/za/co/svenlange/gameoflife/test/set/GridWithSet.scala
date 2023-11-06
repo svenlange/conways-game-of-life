@@ -3,7 +3,7 @@ package za.co.svenlange.gameoflife.test.set
 import java.util
 import za.co.svenlange.gameoflife.core.{Cell, Grid}
 
-import scala.collection.JavaConverters._
+import scala.jdk.CollectionConverters._
 import scala.collection.mutable
 
 class GridWithSet(aliveCells: mutable.HashSet[Cell]) extends Grid {
@@ -22,7 +22,7 @@ class GridWithSet(aliveCells: mutable.HashSet[Cell]) extends Grid {
     getNumberOfAliveNeighbors(new Cell(x, y))
   }
 
-  def getNumberOfAliveNeighbors(cell: Cell): Long = {
+  private def getNumberOfAliveNeighbors(cell: Cell): Long = {
     neighbors(cell).intersect(aliveCells).size.toLong
   }
 
